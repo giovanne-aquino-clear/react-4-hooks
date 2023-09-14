@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import PageTitle from '../../components/layout/PageTitle'
+import SectionTitle from '../../components/layout/SectionTitle'
 
     function calcFatorial(num){
         const n = parseInt(num)
@@ -17,6 +18,12 @@ const UseEffect = (props) => {
     }, [number])
 
     // ex 02
+
+    const [status, setStatus] = useState('impar')
+
+    useEffect(function(){
+        setStatus(number % 2 === 0 ? "par" : "impar")
+    }, [number])
     
 
     return (
@@ -26,7 +33,7 @@ const UseEffect = (props) => {
                 subtitle="Permite executar efeitos colaterais em componentes funcionais!"/>
             <div className="center">
             <div>
-                <span className="text">Fatorial:</span>
+                <span className="text">Fatorial: </span>
                 <span className="text red">{fatorial === -1 ? 'Não existe' : fatorial }</span>
             </div> 
             <input type="number" className="input" 
@@ -34,6 +41,14 @@ const UseEffect = (props) => {
                 onChange={e => setNumber(e.target.value)}/>
                 
             </div>
+            <SectionTitle title = "Exercicio #02"/>
+            <div className="center">
+               <div>
+                  <span className="text">Status: </span>
+                  <span className="text red">{status}</span>
+               </div>
+            </div>      
+        
         </div>    
   )     
 }
