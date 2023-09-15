@@ -13,8 +13,15 @@ const UseRef = (props) => {
 
     useEffect(function(){
         count.current = count.current + 1
+        myInput2.current.focus()
+    }, [value1])
 
-    }, [value1, value2])
+
+    useEffect(function(){
+        count.current++
+        myInput1.current.focus()
+    }, [value2])
+
      
     return (
         <div className="UseRef">
@@ -29,7 +36,6 @@ const UseRef = (props) => {
                 <span className="text">{value1}[</span>
                 <span className="text red">{count.current}</span>
                 <span className="text">]</span>
-                
                 </div>
                 <input type="text" className="input" 
                    ref={myInput1}
@@ -40,7 +46,7 @@ const UseRef = (props) => {
             <div className="center">
                 <input type="text" className="input" 
                     ref={myInput2}
-                    value={value2} onChange={e => setValue2 (e.target)}/>
+                    value={value2} onChange={e => setValue2 (e.target.value)}/>
             </div>
 
         </div>
